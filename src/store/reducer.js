@@ -1,14 +1,8 @@
 import { createStore } from 'redux';
 
 const initialState = {
-  users: [
-    {
-      id: 1,
-      name: '',
-      email: '',
-    },
-  ],
-  user: null, 
+  users: [],
+  loggedInUser: null,
 };
 
 const reducer = (state = initialState, action) => {
@@ -22,13 +16,13 @@ const reducer = (state = initialState, action) => {
     case 'LOGIN':
       return {
         ...state,
-        user: action.payload,
+        loggedInUser: action.payload,
       };
 
     case 'LOGOUT':
       return {
-        ...state,
-        user: null,
+        users: [],
+        loggedInUser: null
       };
 
     default:

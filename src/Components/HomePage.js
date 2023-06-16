@@ -1,13 +1,17 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import './HomePage.css';
 
-function HomePage() {
-  const user = useSelector((state) => state.user);
+const HomePage = () => {
+  const user = useSelector((state) => state.loggedInUser);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const logout = () => {
+    dispatch({
+      type: 'LOGOUT',
+    });
     navigate('/');
   };
 
@@ -39,6 +43,6 @@ function HomePage() {
       )}
     </div>
   );
-}
+};
 
 export default HomePage;
